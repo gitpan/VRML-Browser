@@ -1,0 +1,16 @@
+CVS/
+Makefile$
+Makefile.old
+OLD/
+^t/
+^nodes/
+^examples/
+OpenGL/OpenGL.bs
+OpenGL/OpenGL.c
+\.o$
+VRMLFunc.c
+VRMLFunc.bs
+^blib/
+pm_to_blib
+so_locations
+tmp\.a$

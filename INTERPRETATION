@@ -1,0 +1,11 @@
+
+My own VRML97 spec interpretations -- please feel free to challenge.
+
+1. PROTOs and ROUTEs and SCRIPTs.
+ - SCRIPTs see the outer interface of the proto even when doing
+   direct access, not the inside
+
+2. TouchSensor
+ - isOver events are not generated when the user doesn't move the mouse.
+   if the user moves the mouse, the endpoint is compared with the current
+   isOver status and if it's different, an event is generated.

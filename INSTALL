@@ -1,0 +1,24 @@
+To install, you need Perl 5.004_04 or later as well as an OpenGL-
+compatible library (e.g. IRIX native opengl or the freely available
+Mesa library). You also need an ANSI C compiler and the X development
+libraries as well as an X server to run this program with.
+
+First, edit OpenGL/Makefile.PL to explain where your OpenGL libraries
+are - the current settings are for finding the Mesa library in my
+home directory so you will probably want to change that. Change -lMesaGL
+to -lGL if you have native OpenGL.
+
+Next, try 
+
+	perl Makefile.PL
+
+in the main VRML::Browser directory. If there are any errors, correct
+them first. Email me if the problem persists.
+
+Then, just say 
+
+	make
+
+which should compile and install (in the blib/ directory) the files.
+Because this release is strictly alpha, installing them anywhere else
+is not advisable. 

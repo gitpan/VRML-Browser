@@ -1,0 +1,99 @@
+
+Basic explanations of the architecture of the browser.
+
+Node types are in VRMLNodes.pm
+Parser.pm parses the code
+Scene.pm takes care of the scene graph, PROTOs, DEF/USE, IS etc.
+Events.pm takes care of all moving parts
+GLBackEnd.pm renders and takes mouse events.
+Viewer.pm takes care of navigation and viewpoint.
+
+Each node has two different field hashes:
+The member Fields is a normal hash with values that can refer
+to IS'ed values, DEF/USE structs etc.
+The member RFields is a tied hash which automatically dereferences
+these and sends the proper events whenever a member is stored.
+
+Assignment to individual members of fields is currently not allowed.
+
+============================
+
+There are three parts to this browser: the parser, the scene/event processor
+and the backend (renderer).
+
+It should be possible to easily replace any of these parts and/or
+create character stream (e.g. socket) interfaces between the parts
+and then use parts in other languages that communicate with parts
+of this browser.
+
+=============================
+Rendering backends are defined in a simple fashion:
+
+1. there shall be implementations of all the VRML97 nodes
+that render something or have children (group, transform,
+geometry,...)
+
+2. the backend is used via the functions
+
+  # Initialization
+  $a = VRML::BackEnd()...
+
+  # Creating a new node
+  $n = $a->new_node("Cone", {a => b...}); 
+
+  # Setting fields in a node
+  $a->set_fields($n, {a => b, c => d}); 
+
+  # Setting bindable nodes
+  $a->set_root($n);
+  $a->set_viewpoint($vp); 
+  $a->set_navigationinfo($ni); 
+  $a->set_background($bg);
+
+  # HMM??
+  $a->set_sensitive($n,click,over,sub); # Are mouse hits / overs at $n 
+  				    # to be recorded?
+  $a->delete_node($n); # It can be assumed that nothing will refer to $n
+		       #	at this point.
+
+For field types, the usual perl representations are used, except
+for SFNode, (also inside MFNode) where the id received from the backend ($n)
+is used.
+
+By defining the backend in this way, we will be able to call it over
+a network or process limit or whatever.
+
+The ids can then be C pointers or whatever.
+
+
+=============================
+Parser interface: the parser shall use the following routines:
+Here, $sc is either a file or a prototype.
+
+  # Only explicitly specified fields provided
+  $n = $sc->new_node("Cone", {a => b, ...}) 
+
+  # Finally, set the top-level nodes of the file.
+  $sc->topnodes([$node1,$node2,...]); # Set the top-level nodes
+
+  # DEF/USE
+  $n = $sc->new_def("FOO", $node);
+  $n = $sc->new_use("FOO");
+
+  # ROUTE
+  $sc->new_route("FOO","bar","BAZ","quux");
+
+  # Prototypes:
+  $pr = $sc->new_proto("MyProto",{par => [ftype,type,value]});
+  $pr->new_node(...); # Construct the prototype interface
+  $pr->new_route(...); # Construct the prototype interface
+  $pr->topnodes(...); # Set the top-level nodes
+
+  + SOME
+
+This interface will make it easy to define new VRML formats
+(e.g. compressed binary) and plug them in.
+
+===============================
+Currently inside the scenegraph: PROTO -> copy of implementation
+as well as event model.

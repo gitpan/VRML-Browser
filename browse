@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+# Copyright (C) 1998 Tuomas J. Lukka
+# DISTRIBUTED WITH NO WARRANTY, EXPRESS OR IMPLIED.
+# See the GNU General Public License (file COPYING in the distribution)
+# for conditions of use and redistribution.
+
+use blib;
+
+# use VRML::Browser;
+require 'Browser.pm';
+
+my @verb = @ARGV[1..$#ARGV];
+
+sub verb {return !!grep {$_ eq $_[0] or $_ eq "all"} @verb}
+
+# Turn these switches on if you are debugging
+$VRML::verbose = verb all;
+$VRML::verbose::events = verb ev;
+$VRML::verbose::script = verb scr ;  
+$VRML::verbose::glsens = verb glsens;  # GL sensor code
+$VRML::verbose::tief = verb "tie";    # The tied RFields-hash
+$VRML::verbose::timesens = verb "time";
+
+$b = new VRML::Browser(); # By default creates front- and back-ends.
+
+$b->load_file($ARGV[0]);
+
+$b->eventloop();
+
+

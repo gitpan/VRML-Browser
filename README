@@ -1,0 +1,53 @@
+# Copyright (C) 1998 Tuomas J. Lukka
+# DISTRIBUTED WITH NO WARRANTY, EXPRESS OR IMPLIED.
+# See the GNU General Public License (file COPYING in the distribution)
+# for conditions of use and redistribution.
+
+Welcome to a developer-alpha release of VRML::Browser.
+
+Currently, only simple things are implemented - however, my hope
+is that I have implemented enough simple things so that adding
+the complicated things will not be too much work after this.
+
+See the file INSTALL for how to compile this program.
+
+After installation, try
+
+	./browse tests/1.wrl
+
+(the file browse is the perl script which starts the browser -- if
+there is a problem ("file not found"), try
+
+	perl browse tests/1.wrl
+
+or change the first line of "browse" to find your perl binary).
+
+This should open a new window with a view of the VRML world in question.
+
+Use the first and third button of your mouse (while moving your mouse)
+to move around.
+
+To change viewers between walk and examine, press 'w' or 'e' in 
+the browser window.
+
+E-mail any comments, questions & patches to me at lukka@fas.harvard.edu
+
+	Tuomas J. Lukka
+
+-----------------
+
+V0.01
+ WHAT IS SUPPOSED TO WORK
+  - simple primitives (box, cone, cylinder, sphere, indexedfaceset*)
+  - simple sensors (touchsensor, timesensor)
+  - simple languages (perl)
+  - simple nodes (scalarinterpolator,...)
+  - simple structures (PROTO, USE/DEF)
+ WHAT IS NOT YET IMPLEMENTED
+  - complex geometries (elevationgrid, extrusion)
+  - complex sensors (cylindersensor etc)
+  - complex languages (java, javascript)
+  - complex nodes (switch, lod...)
+  - complex structures (anchor, externproto...)
+
+(* indexedfaceset only partly implemented)

@@ -1,0 +1,9 @@
+- fix bindable nodes' loading so that the correct nodes get bound..
+- use timestamps for changes in nodes, for use with event routes
+  and display lists
+- multithreading: load & execute?
+- raycasting interface for VRMLC so that we get normals & hitpoints
+  & texcoords for touchsensor & are able to implement other sensors.
+- binding nodes properly (was already done once but the event revamp
+  undid it
+- timesensor should ignore events when active.

@@ -1,0 +1,49 @@
+ARCHITECTURE			Short explanation of how it works
+Browser.pm
+COPYING				License
+Events.pm
+GLBackEnd.pm
+GOALS				What I want to do
+INSTALL				READ THIS SECOND
+INTERPRETATION			My interpretations of VRML97 spec
+MANIFEST			This file
+MANIFEST.SKIP
+MANIFEST.bak
+Makefile.PL
+NICEVRML			My intended deviations from the spec
+NODES
+OpenGL/Makefile.PL
+OpenGL/OpenGL.m
+OpenGL/OpenGL.pm
+OpenGL/OpenGL.vf
+OpenGL/OpenGL.xs
+OpenGL/X.h
+OpenGL/examples/clip
+OpenGL/generate.p
+OpenGL/hints/solaris_2.pl
+OpenGL/typemap
+Parser.pm
+Quaternion.pm
+README				READ THIS FIRST
+Scene.pm
+TODO				Things left to do
+VRML.h
+VRMLC.pm
+VRMLCU.pm
+VRMLFields.pm
+VRMLFunc.pm
+VRMLFunc.xs
+VRMLNodes.pm
+Viewer.pm
+browse				The browser script
+tests/1.wrl			Sample things
+tests/2.wrl
+tests/2.wrl.PL
+tests/3.wrl
+tests/4.wrl
+tests/4.wrl.PL
+tests/5.wrl
+tests/6.wrl
+tests/7.wrl
+tests/8.wrl
+typemap

@@ -1,0 +1,14 @@
+VRML syntax relaxation for preprocessor:
+(currently only the route thing is implemented)
+
+The intent is to understand many things but warn of non-standard
+things. 
+
+ROUTE aaa.bbb to ccc.ddd     [allow lowercase as well as omission of TO]
+Transform {
+	translate 0 0 0      [allow 'translate, rotate' for translation..]
+	Shape {		     [automatically infer 'children' for uppercase]
+		Cone { }     [automatically infer 'geometry' for suitable]
+		Material { ... } [...]
+	}
+}
